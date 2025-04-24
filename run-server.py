@@ -8,13 +8,16 @@ debugpy.listen((ip, 5678))
 print(f"Listening on {ip}:5678")
 
 try:
-    # 若你希望在連線前先暫停腳本，可啟用下一行
-    print("Waiting for debugger connection...")
-    debugpy.wait_for_client()
+    while True:
+        # 若你希望在連線前先暫停腳本，可啟用下一行
+        print("Waiting for debugger connection...")
+        debugpy.wait_for_client()
 
-    print("Debugger connected")
-    while debugpy.is_client_connected():
-        time.sleep(1)
+        print("Debugger connected")
+        while debugpy.is_client_connected():
+            time.sleep(1)
+
+        print("Debugger disconnected, waiting for new connection...")
 except Exception as e:
     print(f"Error waiting for debugger connection: {e}")
 except KeyboardInterrupt:
