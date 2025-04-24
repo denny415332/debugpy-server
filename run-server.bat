@@ -1,1 +1,0 @@
-python -m debugpy --listen 10.3.63.15:5678 --wait-for-client ./main.ipynb
